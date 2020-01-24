@@ -225,6 +225,19 @@ end
 % a 1 if the original value was positive and -1 if the original value was negative
 % 
 % You can compute min/max/mean/sd of columns of a matrix easily.
+
+
+for i=1:10
+    if r(i)>0
+        'positive'
+    elseif r(i)<0
+        'negatie'
+    else
+        'zero'
+    end 
+end 
+            
+
 %%
 
 a = randn(4,4);
