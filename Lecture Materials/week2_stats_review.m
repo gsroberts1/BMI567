@@ -9,9 +9,9 @@ mean(total_sales)
 % This is review....
 % If you have a matrix, mean computes means across columns
 fake_data = rand(100, 10);
-mean(fake_data)
+mean(fake_data);
 % This is a quick way to get mean across rows
-mean(fake_data')
+mean(fake_data');
 
 fake_data2 = rand([100, 10, 3]);
 test = mean(fake_data2);  
