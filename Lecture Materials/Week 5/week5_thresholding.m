@@ -8,21 +8,13 @@ close all; clear all; clc;
 load(sprintf('epith.mat'));
 
 % Let's have a look
-figure(1)
-subplot(2, 1, 1)
-imagesc(epith)
-colormap('gray')
-subplot(2,1,2)
-hist(epith(:))
+figure(1); colormap('gray'); 
+subplot(2, 1, 1); imagesc(epith)
+subplot(2,1,2); hist(epith(:))
 
 % Histogram doesn't seem to be telling us much.  Why?
-figure(2)
-subplot(2,1,1);
-hist(epith(:), 500)
-
-subplot(2,1,2);
-hist(epith(:), 110)
-
+figure(2); subplot(2,1,1); hist(epith(:), 500)
+subplot(2,1,2); hist(epith(:), 110)
 
 % That's a bit better, but how about we try filtering?
 filt_size = [3,5, 11, 21];
@@ -41,7 +33,7 @@ figure(4)
 hist(epith_medfilt(:), 100)
 
 % What are you guesses?
-guesses = [5]'
+guesses = [12,23,19,17,127,0,5]'
 guess = mean(guesses);
 
 diff = 2;
@@ -54,16 +46,13 @@ while(diff>0.001)
 end
 
 % Plot the result
-figure(5)
-imagesc(epith_medfilt>guess); colormap('gray')
+figure(5); imagesc(epith_medfilt>guess); colormap('gray')
 
 
 %% Dealing with illumination gradient (cursory approach)
 
 load(sprintf('epith_ig.mat'));
-
-figure(6)
-imagesc(epith_ig); colormap('gray')
+figure(6); imagesc(epith_ig); colormap('gray')
 
 % Let's divide into vertical sections
 size(epith_ig)
@@ -125,8 +114,7 @@ for i = 1:5
     epith_ig_medfilt_seg(:, (1+len_seg*(i-1)):(i*len_seg)) = dat_loop > thresh_final(i);
 end
 
-figure(9)
-imagesc(epith_ig_medfilt_seg); colormap('gray')
+figure(9); imagesc(epith_ig_medfilt_seg); colormap('gray')
 
 
 hold on
